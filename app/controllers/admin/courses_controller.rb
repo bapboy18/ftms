@@ -34,6 +34,7 @@ class Admin::CoursesController < ApplicationController
 
   def show
     @course_subjects = @course.course_subjects
+    @user_subjects = @course.user_subjects
   end
 
   def destroy

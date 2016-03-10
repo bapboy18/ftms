@@ -1,0 +1,24 @@
+<div>
+    <% @subjects.each do |subject| %>
+      <h4><strong><%= subject.name %></strong></h4>
+      <% @users.each do |user| %>
+        <div class="col-md-8">
+          <%= user.name %>
+        </div>
+        <div class="col-md-4">
+          <% binding.pry %>
+          <% if user.user_subject.init? %>
+            <%= link_to t("user_subject.buttons.start"), admin_course_user_subject_change_status_user_subjects_path(user_subject),
+              method: :patch, class: "btn btn-info" %>
+          <% elsif user_subject.progress? %>
+            <%= link_to t("user_subject.buttons.finish"),admin_course_user_subject_change_status_user_subjects_path(user_subject),
+              method: :patch, class: "btn btn-success" %>
+          <% elsif user_subject.finish? %>
+            <label class="btn btn-xs btn-danger">
+              <%= t "user_subject.buttons.finished" %>
+            </label>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+</div>

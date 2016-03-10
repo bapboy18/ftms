@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :courses do
       resource :assign_trainees
       resource :change_status_courses, only: :update
+      resources :user_subjects do
+        resource :change_status_user_subjects, only: :update
+      end
     end
     resources :subjects
   end

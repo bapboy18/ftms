@@ -81,6 +81,12 @@ ja:
     name: "名前:"
     description: "説明:"
     status: "状態:"
+  user_subject:
+    no_assigned: "どのユーザーが割り当てられませんでした!"
+    button:
+      start: "スタート"
+      finish: "仕上げ"
+      finished: "終えた"
   status:
     start: "スタート"
     progress: "プログレス"

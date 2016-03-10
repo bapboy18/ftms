@@ -84,6 +84,12 @@ en:
     name: "Name:"
     description: "Description:"
     status: "Status:"
+  user_subject:
+    no_assigned: "No user was assigned!"
+    buttons:
+      start: "Start"
+      finish: "Finish"
+      finished: "Finished"
   status:
     start: "start"
     progress: "progress"
