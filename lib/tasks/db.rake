@@ -21,11 +21,6 @@ namespace :db do
       Fabricate :role
     end
 
-    puts "Creating Permission"
-    3.times do
-      Fabricate :permission
-    end
-
     puts "Creating Evaluation Template"
     5.times do
       Fabricate :evaluation_template

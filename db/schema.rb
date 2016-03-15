@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225030820) do
+ActiveRecord::Schema.define(version: 20160315030506) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -91,10 +91,11 @@ ActiveRecord::Schema.define(version: 20160225030820) do
   add_index "notes", ["evaluation_id"], name: "index_notes_on_evaluation_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "role_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "model_name",  limit: 255
+    t.string   "action_name", limit: 255
+    t.integer  "role_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "permissions", ["role_id"], name: "index_permissions_on_role_id", using: :btree
