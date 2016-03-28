@@ -13,6 +13,10 @@ class Evaluation < ActiveRecord::Base
     :rank_id, :user_id, evaluation_details_attributes:
       [:id, :name, :point, :evaluation_id, :evaluation_template_id]]
 
+  validates_numericality_of :total_point,
+    greater_than_or_equal_to: Rank.minimum(:begin_point),
+    less_than_or_equal_to: Rank.maximum(:end_point)
+
   private
   def cal_total_point
     points = self.evaluation_details.map{|detail| detail.point}

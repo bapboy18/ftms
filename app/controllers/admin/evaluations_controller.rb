@@ -16,19 +16,20 @@ class Admin::EvaluationsController < ApplicationController
   def create
     if @evaluation.save
       flash[:success] = flash_message "created"
-      redirect_to :back
+      redirect_to edit_admin_user_evaluations_path
     else
-      flash[:success] = flash_message "not_created"
+      flash[:failed] = flash_message "not_created"
       redirect_to :back
     end
   end
 
   def update
+    binding.pry
     if @evaluation.update_attributes evaluation_params
       flash[:success] = flash_message "updated"
       redirect_to :back
     else
-      flash[:success] = flash_message "not_updated"
+      flash[:failed] = flash_message "not_updated"
       redirect_to :back
     end
   end

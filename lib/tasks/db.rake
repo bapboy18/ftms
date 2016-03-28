@@ -9,6 +9,19 @@ namespace :db do
     end
     Fabricate :role, name: "trainee", allow_access_admin: false
 
+    puts "Creating Permissions"
+    Fabricate :permission, model_class: "CourseMaster", role_id: 1
+    Fabricate :permission, model_class: "Task", role_id: 3
+    ["Course", "CourseSubject", "Subject", "UserSubject"].each do |name|
+      Fabricate :permission, model_class: name, action: "manage", role_id: 2
+    end
+    ["UserSubject", "UserTask", "User"].each do |name|
+      Fabricate :permission, model_class: name, action: "update", role_id: 3
+    end
+    ["Course", "Subject", "Task", "UserCourse", "UserSubject", "UserTask", "User"].each do |name|
+      Fabricate :permission, model_class: name, action: "read", role_id: 3
+    end
+
     puts "Creating User"
     Fabricate :user, email: "admin@tms.com", role_id: 1
     Fabricate :user, email: "supervisor@tms.com", role_id: 2
@@ -29,17 +42,6 @@ namespace :db do
     puts "Creating Task Master"
     5.times do
       Fabricate :task_master
-    end
-
-    puts "Creating Permissions"
-    Fabricate :permission, model_class: "CourseMaster", role_id: 1
-    ["Course", "CourseSubject", "Subject", "UserSubject"].each do |name|
-      Fabricate :permission, model_class: name, action: "manage", role_id: 2
-    end
-    ["update", "show"].each do |name|
-      Fabricate :permission, model_class: "UserSubject", action: name
-      Fabricate :permission, model_class: "UserTask", action: name
-      Fabricate :permission, model_class: "User", action: name
     end
 
     puts "Create Rank"
