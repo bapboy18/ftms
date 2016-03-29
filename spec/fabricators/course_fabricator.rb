@@ -1,5 +1,4 @@
 Fabricator(:course) do
-  name {sequence(:name) {|i| "Course#{i}"}}
+  name {sequence(:name) {|i| "Course Master#{i + 1}"}}
   description {Faker::Lorem.sentence}
-  status 0
 end

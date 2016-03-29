@@ -16,6 +16,17 @@ namespace :db do
       Fabricate :user
     end
 
+    puts "Creating CourseMaster and Course"
+    5.times do
+      Fabricate :course
+    end
+    Course.each do |course_master|
+      2.times do
+        Fabricate :course, name: course_master.name,
+          description: course_master.description, parent_id: course_master.id
+      end
+    end
+
     puts "Creating Subject"
     10.times do
       Fabricate :subject
