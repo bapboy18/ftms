@@ -1,9 +1,12 @@
 <div id="task-show">
-  <div class="grid well cell">
+  <div class="grid cell">
     <div class="grid-box-6 breadcrumb-paths">
       <ul class="list breadcrumb mts">
         <li>
-          <%= link_to t("layouts.paths"), root_path %>
+          <%= link_to root_path do %>
+            <i class="glyphicon glyphicon-th-list"></i>
+            <%= t("layouts.paths") %>
+          <% end %>
         </li>
         <li>
           <%= link_to t("layouts.all_courses"), courses_path %>
@@ -12,23 +15,25 @@
           <%= link_to @course.name, course_subjects_path %>
         </li>
         <li>
-          <%= link_to @subject.name, course_tasks_path %>
+          <%= link_to @subject.name, course_subject_path(@course, @subject) %>
         </li>
         <li><%= @task.name %></li>
       </ul>
     </div>
     <div class="grid-box-4 task-action">
       <ul class="row-action">
-        <li>
-          <%= t "tasks.assignee" %>
+        <li class="task-info">
+          <%= link_to_if @task.create_by_trainee, t("tasks.task_info"),
+            {controller: "tasks", action: "edit"} %>
         </li>
         <li>
-          <%= collection_select(:user, :user_id, @users, :id, :name,
-            {selected: @assigned_trainee.id}) %>
+          <%= link_to t("tasks.user_task"), edit_user_task_path(@user_task) %>
         </li>
       </ul>
     </div>
   </div>
+  <hr>
+
   <div id="task-info" class="grid">
     <div class="grid-box grid-box-6">
       <div class="task-attributes well">
@@ -39,8 +44,24 @@
       </div>
     </div>
     <div class="grid-box grid-box-4">
-      <div class="well">
-        <h4><%= t "tasks.progress" %> &nbsp;</h4>
+      <div class="well row">
+        <p>
+          <div class="col-md-6">
+            <%= t "tasks.status" %>:
+          </div>
+          <div class="col-md-6 <%= style_of_status @user_task.status %>">
+            <%= t "tasks.statuses.#{Settings.tasks.statuses.key(@user_task.status)}" unless @user_task.status.nil? %>
+          </div>
+        </p>
+        <p>
+          <div class="col-md-6">
+            <%= t "tasks.assignee" %>:
+          </div>
+          <div class="col-md-6">
+            <b><%= @user_task.user_name unless @user_task.user_name.nil? %></b>
+          </div>
+        </p>
+        <h4><%= t "tasks.progress" %></h4>
         <div class="progress">
           <div class="progress-bar progress-bar-success" role="progressbar"
             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
@@ -48,6 +69,30 @@
              <%= @user_task.progress %>%&nbsp;<%= t "tasks.complete" %>
           </div>
         </div>
+        <p>
+          <div class="col-md-6">
+            <%= t "tasks.estimated_time" %>:
+          </div>
+          <div class="col-md-6">
+            <b><%= @user_task.estimated_time unless @user_task.estimated_time.nil? %></b><br />
+          </div>
+        </p>
+        <p>
+          <div class="col-md-6">
+            <%= t "tasks.spent_time" %>:
+          </div>
+          <div class="col-md-6">
+            <b><%= @user_task.spent_time unless @user_task.spent_time.nil? %></b><br />
+          </div>
+        </p>
+        <p>
+          <div class="col-md-6">
+            <%= t "tasks.redmine_task_id" %>:
+          </div>
+          <div class="col-md-6">
+            <b><%= @user_task.redmine_task_id unless @user_task.redmine_task_id.nil? %></b>
+          </div>
+        </p>
       </div>
     </div>
   </div>

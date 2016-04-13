@@ -37,6 +37,17 @@ ja:
     update: "タスクをアップデータ"
     complete: "コンプリート"
     assignee: "譲受人"
+    task_info: "タスク情報"
+    user_task: "ユーザータスク"
+    status: "ステータス"
+    estimated_time: "予定時刻"
+    spent_time: "費やした時間"
+    redmine_task_id: "RedmineのタスクID"
+    statuses:
+      new: "新しい"
+      in_progress: "進行中"
+      resolved: "解決済み"
+      closed: "閉じた"
   subjects:
     finish: "フィニッシュ"
     subject: "件名"

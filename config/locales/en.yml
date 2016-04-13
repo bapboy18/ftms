@@ -46,6 +46,17 @@ en:
     update: "Update"
     complete: "Complete"
     assignee: "Assignee"
+    task_info: "Task-info"
+    user_task: "User-task"
+    status: "Status"
+    estimated_time: "Estimated time"
+    spent_time: "Spent time"
+    redmine_task_id: "Redmine task id"
+    statuses:
+      new: "New"
+      in_progress: "In Progress"
+      resolved: "Resolved"
+      closed: "Closed"
   subjects:
     finish: "Finish"
     subject: "Subject"
