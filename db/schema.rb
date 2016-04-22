@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 20160418025920) do
 
   create_table "task_masters", force: :cascade do |t|
     t.string   "name",        limit: 255
-    t.string   "avatar",      limit: 255
+    t.string   "image",       limit: 255
     t.text     "description", limit: 65535
     t.text     "content",     limit: 65535
     t.integer  "subject_id",  limit: 4

@@ -69,7 +69,7 @@ class Course < ActiveRecord::Base
   end
 
   def load_trainers
-    users.trainees
+    users.trainers
   end
 
   def load_trainees

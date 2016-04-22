@@ -11,7 +11,7 @@ en:
     fields:
       name: "Name"
       description: "Description"
-      avatar: "Avatar"
+      image: "Image"
       content: "Content"
     form:
       input_task_name: "Enter task name..."

@@ -86,7 +86,7 @@ en:
     description: "Description:"
     content: "Content:"
     list_subjects: "List subjects:"
-    avatar: "Avatar:"
+    image: "Image"
     create_course: "Create a new course"
     status: "Status:"
     score: "Score"

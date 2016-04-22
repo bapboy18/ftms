@@ -74,7 +74,7 @@ ja:
     description: "説明"
     content: "コンテンツ"
     list_subjects: "リスト科目"
-    avatar: "アバター"
+    image: "イメージ"
     create_course: "新しいコースを作成する"
     status: "状態:"
     score: "スコア"
